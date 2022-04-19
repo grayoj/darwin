@@ -1,12 +1,14 @@
 BUILD_DIR?=build/
 ASM?=nasm
+
 .PHONY: all clean
 
-all: phase1
+all: stage1
 
-phase1: $(BUILD_DIR)/phase1.bin
+stage1: $(BUILD_DIR)/stage1.bin
 
-	$(BUILD_DIR)/phase1.bin:
-		$(ASM) boot.asm -f bin -o $(BUILD_DIR)/phase1.bin
+$(BUILD_DIR)/stage1.bin:
+	$(ASM) boot.asm -f bin -o $(BUILD_DIR)/stage1.bin
+
 clean:
-	im -f $(BUILD_DIR)/phase1.bin
+	rm -f $(BUILD_DIR)/stage1.bin
